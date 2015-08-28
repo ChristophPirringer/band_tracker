@@ -1,0 +1,18 @@
+<% if @message %>
+  <h1><%= @message %></h1>
+  <a href="/">Take me back!</a>
+
+<% else %>
+
+  <h2>Welcome to the ticket-counter!</h2>
+  <hr>
+  <h4>You wish to buy a ticket for <%= @band.name() %></h4>
+  <h4>Playing at the venue of <%= @venue.name() %></h4>
+  <hr>
+  <h5>The cost will be: <%= @price %> Dollars.</h5>
+  <br>
+  <h3>Do you wish to buy this ticket?</h3>
+  <a class="btn-danger" href="/">No, take me back!</a>
+  <a class="btn-primary" href="/venues/<%= @venue.id %>/bands/<%= @band.id %>/ticket/yes">Rock'N'Roll!</a>
+
+<% end %>

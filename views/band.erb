@@ -32,7 +32,7 @@
       <h3>Here are the venues this band will play at:</h3>
       <ul>
         <% @band.venues.each() do |band_venue| %>
-          <li> <a href="/venues/<%= band_venue.id() %>"><%= band_venue.name() %></a> </li>
+          <li> <a href="/venues/<%= band_venue.id() %>"><%= band_venue.name() %></a> <a href="/venues/<%= band_venue.id() %>/bands/<%= @band.id() %>/ticket">Buy A Ticket!</a> </li>
         <% end %>
       </ul>
     <% else %>

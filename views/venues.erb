@@ -9,7 +9,7 @@
   <p>View All The Bands!</p>
   <ul>
     <% @venues.each() do |venue| %>
-      <li> <a href="/venues/<%= venue.id() %>"><%= venue.name() %></a> <a class = "remover" href="/venues/<%= venue.id() %>/delete_from_venues">Delete <%= venue.name() %></a></li>
+      <li> <a href="/venues/<%= venue.id() %>"><%= venue.name() %> charging <%= venue.price() %> Dollars overhead</a> <a class = "remover" href="/venues/<%= venue.id() %>/delete_from_venues">Delete <%= venue.name() %></a></li>  
     <% end %>
 
   </ul>
@@ -19,6 +19,8 @@
 <form action="/venues" method="post">
   <label for="name">Venue Name:  </label>
   <input type="text" name="name" id="name">
+  <label for="price">Venue Overhead:  </label>
+  <input type="number" name="price" id="price">
   <button type="submit">Add Venue</button>
 </form>
 

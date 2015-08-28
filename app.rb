@@ -24,7 +24,8 @@ end
 
 post("/bands") do
   name = params.fetch("name")
-  Band.create({:name => name})
+  price = params.fetch("price")
+  Band.create({:name => name, :price => price})
   redirect("/bands")
 end
 
@@ -56,7 +57,8 @@ end
 
 post("/venues") do
   name = params.fetch("name")
-  Venue.create({:name => name})
+  price = params.fetch("price")
+  Venue.create({:name => name, :price => price})
   redirect("/venues")
 end
 
@@ -86,8 +88,8 @@ end
 #############################
 #######---Band-Page---#######
 #############################
-get('/bands/:id') do
-  @band = Band.find(params.fetch("id").to_i())
+get('/bands/:band_id') do
+  @band = Band.find(params.fetch("band_id").to_i())
   if @band.venues
     @venue = @band.venues
   else
@@ -97,23 +99,23 @@ get('/bands/:id') do
   erb(:band)
 end
 
-patch("/bands/:id") do
+patch("/bands/:band_id") do
   venue_id = params.fetch("venue_id").to_i()
   venue = Venue.find(venue_id)
-  @band = Band.find(params.fetch("id").to_i())
+  @band = Band.find(params.fetch("band_id").to_i())
   @band.venues.push(venue)
   redirect back
 end
 
-delete('/bands/:id/delete') do
-	@band = Band.find(params['id'].to_i)
+delete('/bands/:band_id/delete') do
+	@band = Band.find(params['band_id'].to_i)
 	@band.destroy
 	@bands = Band.all()
 	erb(:bands)
 end
 
-patch ('/bands/:id/rename') do
-	@band = Band.find(params['id'].to_i)
+patch ('/bands/:band_id/rename') do
+	@band = Band.find(params['band_id'].to_i)
   @band.update({name: params["name"]})
 	@bands = Band.all()
 	redirect back
@@ -121,10 +123,10 @@ end
 
 
 #############################
-#######---Venue-Page---#######
+#######---Venue-Page---######
 #############################
-get('/venues/:id') do
-  @venue = Venue.find(params.fetch("id").to_i())
+get('/venues/:venue_id') do
+  @venue = Venue.find(params.fetch("venue_id").to_i())
   # binding.pry
   if @venue.bands
     @band = @venue.bands
@@ -133,4 +135,24 @@ get('/venues/:id') do
   end
   @bands = Band.all()
   erb(:venue)
+end
+
+
+#############################
+#######---Ticket-Page---######
+#############################
+get('/venues/:venue_id/bands/:band_id/ticket') do
+  @venue = Venue.find(params.fetch("venue_id").to_i())
+  @band = Band.find(params.fetch("band_id").to_i())
+  @price = @venue.price() .+ @band.price()
+  @message = nil
+  erb(:ticket)
+end
+
+get('/venues/:venue_id/bands/:band_id/ticket/yes') do
+  @venue = Venue.find(params.fetch("venue_id").to_i())
+  @band = Band.find(params.fetch("band_id").to_i())
+  @price = @venue.price() .+ @band.price()
+  @message = "Party On Dude! Your ticket is in the mail!"
+  erb(:ticket)
 end

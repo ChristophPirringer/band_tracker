@@ -9,7 +9,7 @@
   <p>View All The Bands!</p>
   <ul>
     <% @bands.each() do |band| %>
-      <li> <a href="/bands/<%= band.id() %>"><%= band.name() %></a> <a class = "remover" href="/bands/<%= band.id() %>/delete_from_bands">Delete <%= band.name() %></a></li>
+      <li> <a href="/bands/<%= band.id() %>"><%= band.name() %> demanding <%= band.price() %> Dollars per ticket.</a> <a class = "remover" href="/bands/<%= band.id() %>/delete_from_bands">Delete <%= band.name() %></a></li>
     <% end %>
 
   </ul>
@@ -19,6 +19,8 @@
 <form action="/bands" method="post">
   <label for="name">Band Name:  </label>
   <input type="text" name="name" id="name">
+  <label for="price">Standard Ticket Price:  </label>
+  <input type="number" name="price" id="price">
   <button type="submit">Add Band</button>
 </form>
 
