@@ -1,0 +1,25 @@
+<h2>venues</h2>
+
+<% if @venues == [] %>
+
+  <p>You don't have a single venue, poor bastard!</p>
+
+  <% else %>
+
+  <p>View All The Bands!</p>
+  <ul>
+    <% @venues.each() do |venue| %>
+      <li> <a href="/venues/<%= venue.id() %>"><%= venue.name() %></a> <a class = "remover" href="/venues/<%= venue.id() %>/delete_from_venues">Delete <%= venue.name() %></a></li>
+    <% end %>
+
+  </ul>
+<% end %>
+
+<h3> Add a venue: </h3>
+<form action="/venues" method="post">
+  <label for="name">Venue Name:  </label>
+  <input type="text" name="name" id="name">
+  <button type="submit">Add Venue</button>
+</form>
+
+<a href="/clear/venues">Clear all venues!</a>

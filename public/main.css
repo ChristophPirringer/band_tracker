@@ -1,0 +1,37 @@
+
+/***********************
+-------Global--------
+***********************/
+body{
+  padding-top: 170px;
+  height: 850px;
+  background: linear-gradient(#fff, transparent 90%),
+  linear-gradient(0deg, #fff, transparent),
+  #fff url('http://hollywoodmetal.com/wp-content/uploads/2015/03/metallica-metallica-32866102-1792-1200.jpg') no-repeat center;
+  background-size: cover;
+  text-align:center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.remover{
+  color:red;
+  margin-left:2rem;
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.nav li {
+  width:15rem; /*Fixes the width of all elements*/
+  margin-right:3rem;
+}

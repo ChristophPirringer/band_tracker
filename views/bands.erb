@@ -1,0 +1,25 @@
+<h2>bands</h2>
+
+<% if @bands == [] %>
+
+  <p>You don't have a single band, poor bastard!</p>
+
+  <% else %>
+
+  <p>View All The Bands!</p>
+  <ul>
+    <% @bands.each() do |band| %>
+      <li> <a href="/bands/<%= band.id() %>"><%= band.name() %></a> <a class = "remover" href="/bands/<%= band.id() %>/delete_from_bands">Delete <%= band.name() %></a></li>
+    <% end %>
+
+  </ul>
+<% end %>
+
+<h3> Add a band: </h3>
+<form action="/bands" method="post">
+  <label for="name">Band Name:  </label>
+  <input type="text" name="name" id="name">
+  <button type="submit">Add Band</button>
+</form>
+
+<a href="/clear/bands">Clear all bands!</a>
