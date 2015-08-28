@@ -35,13 +35,37 @@ describe('adding a new band', {:type => :feature}) do
   end
 end
 
+describe('removing bands', {:type => :feature}) do
+  it('allows a user to delete a specific band') do
+    visit('/bands')
+    fill_in('name', :with => 'metallica')
+    fill_in('price', :with => 5)
+    click_button('Add Band')
+    click_link('Delete Metallica')
+    expect(page).to have_no_content('Metallica')
+  end
+
+  it('allows a user to delete all bands') do
+    visit('/bands')
+    fill_in('name', :with => 'one metallica')
+    fill_in('price', :with => 5)
+    click_button('Add Band')
+    fill_in('name', :with => 'two metallica')
+    fill_in('price', :with => 5)
+    click_button('Add Band')
+    click_link('Clear all bands')
+    expect(page).to have_no_content('Metallica')
+  end
+end
+
 describe('renaming a band', {:type => :feature}) do
   it('allows a user to add a new band and see it on the bands-page') do
     visit('/bands')
     fill_in('name', :with => 'metallica')
     fill_in('price', :with => 5)
     click_button('Add Band')
-    click_link('Metallica demanding 5 Dollars per ticket')
+    click_link('Metallica demanding 5 Dollars per ticket.')
+    fill_in('name', :with => 'plastica')
     click_button('Update')
     expect(page).to have_content('Plastica')
     end
@@ -57,7 +81,7 @@ describe('adding a venue to a band', {:type => :feature}) do
     fill_in('name', :with => 'metallica')
     fill_in('price', :with => 5)
     click_button('Add Band')
-    click_link('Metallica demanding 5 Dollars per ticket')
+    click_link('Metallica demanding 5 Dollars per ticket.')
     click_button('Submit')
     expect(page).to have_content('Buy A Ticket!')
   end
@@ -73,7 +97,7 @@ describe('deleting a band', {:type => :feature}) do
     fill_in('name', :with => 'metallica')
     fill_in('price', :with => 5)
     click_button('Add Band')
-    click_link('Metallica demanding 5 Dollars per ticket')
+    click_link('Metallica demanding 5 Dollars per ticket.')
     click_button('Delete Band')
     expect(page).to have_no_content('Metallica')
   end
@@ -106,6 +130,29 @@ describe('adding a new venue', {:type => :feature}) do
     fill_in('price', :with => 5)
     click_button('Add Venue')
     expect(page).to have_content('Berlin Man! charging 5 Dollars overhead')
+  end
+end
+
+describe('removing venues', {:type => :feature}) do
+  it('allows a user to delete a specific venue') do
+    visit('/venues')
+    fill_in('name', :with => 'berlin')
+    fill_in('price', :with => 5)
+    click_button('Add Venue')
+    click_link('Delete Berlin Man!')
+    expect(page).to have_no_content('Berlin')
+  end
+
+  it('allows a user to delete all venues') do
+    visit('/venues')
+    fill_in('name', :with => 'one berlin')
+    fill_in('price', :with => 5)
+    click_button('Add Band')
+    fill_in('name', :with => 'two berlin')
+    fill_in('price', :with => 5)
+    click_button('Add Band')
+    click_link('Clear all venues!')
+    expect(page).to have_no_content('Berlin')
   end
 end
 
