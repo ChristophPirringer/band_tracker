@@ -9,6 +9,11 @@ get("/") do
 end
 
 
+#################################################################
+#############################---Listings---######################
+#################################################################
+
+
 #############################
 ######---Bands-Page---#######
 #############################
@@ -70,4 +75,62 @@ get("/clear/venues") do
   Venue.delete_all()
   @venues = Venue.all()
   erb(:venues)
+end
+
+
+#################################################################
+#############################---Singulars---#####################
+#################################################################
+
+
+#############################
+#######---Band-Page---#######
+#############################
+get('/bands/:id') do
+  @band = Band.find(params.fetch("id").to_i())
+  if @band.venues
+    @venue = @band.venues
+  else
+    @venue = nil
+  end
+  @venues = Venue.all()
+  erb(:band)
+end
+
+patch("/bands/:id") do
+  venue_id = params.fetch("venue_id").to_i()
+  venue = Venue.find(venue_id)
+  @band = Band.find(params.fetch("id").to_i())
+  @band.venues.push(venue)
+  redirect back
+end
+
+delete('/bands/:id/delete') do
+	@band = Band.find(params['id'].to_i)
+	@band.destroy
+	@bands = Band.all()
+	erb(:bands)
+end
+
+patch ('/bands/:id/rename') do
+	@band = Band.find(params['id'].to_i)
+  @band.update({name: params["name"]})
+	@bands = Band.all()
+	redirect back
+end
+
+
+#############################
+#######---Venue-Page---#######
+#############################
+get('/venues/:id') do
+  @venue = Venue.find(params.fetch("id").to_i())
+  # binding.pry
+  if @venue.bands
+    @band = @venue.bands
+  else
+    @band = nil
+  end
+  @bands = Band.all()
+  erb(:venue)
 end

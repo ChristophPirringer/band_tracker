@@ -1,0 +1,59 @@
+<h2>Band: <%= @band.name() %></h2>
+<hr>
+
+<div class="row">
+
+  <div style ="float:left;">
+    <form action="/bands/<%= @band.id %>/rename" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <label for="name">Enter a new name:</label>
+      <input id="name" name="name" type="text">
+
+      <button type="submit">Update</button>
+    </form>
+  </div>
+
+  <div style="clear:right;">
+    <form action="/bands/<%= @band.id %>/delete" method="post">
+      <input name="_method" type="hidden" value="delete">
+
+      <button type="submit">Delete Band</button>
+    </form>
+  </div>
+
+</div>
+
+<hr>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <% if @band.venues.any? %>
+      <h3>Here are the venues this band will play at:</h3>
+      <ul>
+        <% @band.venues.each() do |band_venue| %>
+          <li> <a href="/venues/<%= band_venue.id() %>"><%= band_venue.name() %></a> </li>
+        <% end %>
+      </ul>
+    <% else %>
+        <p><strong>Currently this band is not sheduled to play at any venues.</strong></p>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Assign band to a venue:</h4>
+    <form id="update_venue_id" action="/bands/<%= @band.id() %>" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <input type="hidden" name="band_id" id="band_id" value="<%= @band.id() %>">
+      <label for="venue_select">Select the Venue:  </label>
+        <br>
+      <select id="venue_id" name="venue_id">
+        <% @venues.each() do |venue| %>
+          <option value="<%= venue.id() %>"><%= venue.name() %></option>
+        <% end %>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+</div>

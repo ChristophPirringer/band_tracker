@@ -1,0 +1,13 @@
+<h2>Venue: <%= @venue.name() %></h2>
+<hr>
+
+<% if @venue.bands.any? %>
+  <h3>Here are the bands this venue will host:</h3>
+  <ul>
+    <% @venue.bands.each() do |band_venue| %>
+      <li> <a href="/bands/<%= band_venue.id() %>"><%= band_venue.name() %></a> </li>
+    <% end %>
+  </ul>
+<% else %>
+    <p><strong>Currently this venue is not sheduled to host any bands.</strong></p>
+<% end %>
