@@ -8,8 +8,13 @@ describe(Venue) do
     expect(venue.save()).to(eq(false))
   end
 
-  it("converts the venue to capitalized and have 'Man!' added") do
+  it("ensures that the location has the name as entered") do
     venue = Venue.create({:name => "vienna", :price => 5})
-    expect(venue.name()).to(eq("Vienna Man!"))
+    expect(venue.name()).to(eq("vienna"))
+  end
+
+  it("ensures that the location has the price as entered") do
+    venue = Venue.create({:name => "vienna", :price => 5})
+    expect(venue.price()).to(eq(5))
   end
 end

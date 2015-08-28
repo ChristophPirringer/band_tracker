@@ -26,7 +26,7 @@ post("/bands") do
   name = params.fetch("name")
   price = params.fetch("price")
   Band.create({:name => name, :price => price})
-  binding.pry
+  # binding.pry
   redirect("/bands")
 end
 

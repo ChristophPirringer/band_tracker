@@ -8,9 +8,14 @@ describe(Band) do
     expect(band.save()).to(eq(false))
   end
 
-  it("converts the name to capitalized") do
-    band = Band.create({:name => "metallica"})
-    expect(band.name()).to(eq("Metallica"))
+  it("ensures the Band has a name as entered") do
+    band = Band.create({:name => "metallica", :price => 5})
+    expect(band.name()).to(eq("metallica"))
+  end
+
+  it("ensures the Band has a price as entered") do
+    band = Band.create({:name => "metallica", :price => 5})
+    expect(band.price()).to(eq(5))
   end
 
 end

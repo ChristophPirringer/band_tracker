@@ -4,13 +4,16 @@
 
 #### By _**{Christoph Pirringer}**_
 
+## Feedback Request
+_{I can not find the reason, why my integration-specs for the venues fail or how i can prevent the entries from building up over multiple tests in the ticket-path of the integration_specs. Information on how it should have been done would be greatly appreciated._}
+
 
 ## Description
 
-_{The app allows you to enter bands along with their own relative ticket-prices (unless it's Nickelback. the App refuses t take Nickelback, it's cool that way). For display on the bands-list, the name of the band will be capitalized and displayed along its price.
-Similarly one can enter a venue including a markup specific to taht place.
-On the pages for the single bands or venues, the relative relationships (a.k.a. "will play there") are displayed, along with a link to buy the relative ticket.
-On the ticket-coutner-page, the price for the ticket is calculated and displayed & the suer is given the choice to nuy the ticket or to abort.}_
+_{The app allows you to enter bands along with their own relative ticket-prices (unless it's Nickelback. the App refuses to take Nickelback, it's cool that way). For display on the bands-list, the name of the band will be capitalized and displayed along its price.
+Similarly one can enter a venue including a markup specific to that place.
+On the pages for the single bands or venues, the relative relationships (a.k.a. "will play there") are displayed, along with a link to buy the specific ticket.
+On the ticket-counter-page, the price for the ticket is calculated and displayed & the user is given the choice to buy the ticket or to abort.}_
 
 ## Setup
 
@@ -32,7 +35,7 @@ On the ticket-coutner-page, the price for the ticket is calculated and displayed
 
 ## Technologies Used
 
-_{This marvel or programming was produced with Html, Css, Java-Script & Jquery as well as Ruby and ActiveRecord. Multiple gems as listed in the Gemfile were used.}_
+_{This marvel or programming was produced with Html, Css, Java-Script & JQuery as well as Ruby and ActiveRecord. Multiple gems as listed in the Gemfile were used.}_
 
 ### Legal
 
