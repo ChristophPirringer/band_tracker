@@ -27,6 +27,8 @@ On the ticket-counter-page, the price for the ticket is calculated and displayed
 *__ Copy the folder of this awesome app onto your computer
 *__ Run the bundle-gem from within the uppermost app-folder in your command-prompt to install all necessary gems
 *__ From this location, start a postgres-server (by typing in 'postgres' in your terminal)
+*__ Also there, enter 'db:create' to create a database
+*__ Next, enter 'db:migrate' to add appropriate table information
 *__ From the same location, start a sinatra-server in a new terminal-tab  (by typing in 'ruby app.rb')
 *__ open 'localhost:4567/' in your browser-window to see the app
 *__ Enjoy!!

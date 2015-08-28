@@ -35,3 +35,11 @@ ul {
   width:15rem; /*Fixes the width of all elements*/
   margin-right:3rem;
 }
+
+a {
+  color: #0000FF
+;
+}
+a:hover {
+  color: #8080FF;
+}
